@@ -31,7 +31,20 @@ Period-by-period breakdown showing how money grows with compound interest.
 
 ## Getting Started
 
+### Local Development
+
 Simply open `index.html` in a web browser. All calculators are client-side JavaScript applications - no server required!
+
+### Live Site
+
+The calculators are hosted on GitHub Pages and available at:
+
+**https://mahoney-jones.github.io/investment-calc/**
+
+## Repository
+
+- **GitHub**: https://github.com/mahoney-jones/investment-calc
+- **Live Site**: https://mahoney-jones.github.io/investment-calc/
 
 ## Documentation
 
@@ -39,6 +52,7 @@ Simply open `index.html` in a web browser. All calculators are client-side JavaS
 - [Parent Investment Calculator](PARENT-PERSPECTIVE-CALCULATOR.md) - Comprehensive guide to the parent perspective calculator
 - [Today's Progress](TODAYS-PROGRESS.md) - Development progress and new features
 - [Balanced Portfolio Strategy](BALANCED-PORTFOLIO-STRATEGY.md) - Investment strategy documentation
+- [Deployment Guide](DEPLOYMENT.md) - Complete GitHub deployment documentation
 
 ## Technologies
 
