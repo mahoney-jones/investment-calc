@@ -12,7 +12,7 @@ const totalProjectedValueDisplay = document.querySelector("#totalProjectedValue"
 const averagePerChildDisplay = document.querySelector("#averagePerChild");
 const totalGrowthDisplay = document.querySelector("#totalGrowth");
 
-const currencyFormatter = new Intl.NumberFormat(undefined, {
+const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 2,

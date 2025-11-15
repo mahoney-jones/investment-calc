@@ -54,7 +54,7 @@ const summaryDiff1 = document.querySelector("#summaryDiff1");
 const summaryDiff2 = document.querySelector("#summaryDiff2");
 const summaryDiff3 = document.querySelector("#summaryDiff3");
 
-const currencyFormatter = new Intl.NumberFormat(undefined, {
+const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 0,

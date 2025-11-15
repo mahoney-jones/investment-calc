@@ -9,7 +9,7 @@ const totalContributedDisplay = document.querySelector("#totalContributed");
 const interestEarnedDisplay = document.querySelector("#interestEarned");
 const scheduleLink = document.querySelector("#scheduleLink");
 
-const currencyFormatter = new Intl.NumberFormat(undefined, {
+const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 2,

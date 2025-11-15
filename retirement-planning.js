@@ -18,7 +18,7 @@ const monthlySavingsNeededDisplay = document.querySelector("#monthlySavingsNeede
 const timelineSection = document.querySelector("#timelineSection");
 const timelineContent = document.querySelector("#timelineContent");
 
-const currencyFormatter = new Intl.NumberFormat(undefined, {
+const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 0,
