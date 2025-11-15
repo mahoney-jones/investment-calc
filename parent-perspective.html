@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent Investment Calculator - ROI Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Parent Investment Calculator</h1>
+        <p class="subtitle">
+          Calculate how much to invest for your kids, and how they can invest for their own kids
+        </p>
+      </header>
+
+      <main>
+        <section class="form-section">
+          <h2>Investment Parameters</h2>
+          
+          <div class="field">
+            <label for="numKids">Number of Children</label>
+            <div class="field-input">
+              <input
+                id="numKids"
+                type="number"
+                min="1"
+                max="10"
+                step="1"
+                value="2"
+                aria-describedby="numKids-help"
+              />
+            </div>
+            <small id="numKids-help">How many children you have.</small>
+          </div>
+
+          <div class="field">
+            <label for="investmentPerKid">Investment per Child</label>
+            <div class="field-input">
+              <span class="prefix">$</span>
+              <input
+                id="investmentPerKid"
+                type="number"
+                step="1000"
+                min="0"
+                value="10000"
+                aria-describedby="investmentPerKid-help"
+              />
+            </div>
+            <small id="investmentPerKid-help">Amount you invest for each child when they turn 5.</small>
+          </div>
+
+          <div class="field">
+            <label for="rate">Annual Return Rate</label>
+            <div class="field-input">
+              <input
+                id="rate"
+                type="number"
+                step="0.25"
+                min="0"
+                value="7.8"
+                aria-describedby="rate-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="rate-help">Expected annual return (use historical returns already net of fees).</small>
+          </div>
+
+          <div class="field">
+            <label for="frequency">Compounding Frequency</label>
+            <select id="frequency" aria-describedby="frequency-help">
+              <option value="365">Daily</option>
+              <option value="52">Weekly</option>
+              <option value="26">Bi-weekly</option>
+              <option value="12" selected>Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="2">Semiannually</option>
+              <option value="1">Annually</option>
+            </select>
+            <small id="frequency-help">Number of times interest compounds each year.</small>
+          </div>
+
+          <div class="field">
+            <label for="mer">Management Expense Ratio (MER)</label>
+            <div class="field-input">
+              <input
+                id="mer"
+                type="number"
+                step="0.01"
+                min="0"
+                max="5"
+                value="0.24"
+                aria-describedby="mer-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="mer-help">Annual fee percentage (e.g., 0.24% for VGRO).</small>
+          </div>
+
+          <div class="field">
+            <label for="kidMonthlyContribution">Children's Monthly Contribution</label>
+            <div class="field-input">
+              <span class="prefix">$</span>
+              <input
+                id="kidMonthlyContribution"
+                type="number"
+                step="50"
+                min="0"
+                value="0"
+                aria-describedby="kidMonthlyContribution-help"
+              />
+            </div>
+            <small id="kidMonthlyContribution-help">Monthly contribution each child will make starting at age 20.</small>
+          </div>
+
+          <div class="field">
+            <label for="oldestKidAge">Oldest Child's Current Age</label>
+            <div class="field-input">
+              <input
+                id="oldestKidAge"
+                type="number"
+                min="0"
+                max="100"
+                step="1"
+                value="10"
+                aria-describedby="oldestKidAge-help"
+              />
+              <span class="suffix">yrs</span>
+            </div>
+            <small id="oldestKidAge-help">Enter the age of your oldest child. Ages for other children will be calculated based on spacing.</small>
+          </div>
+
+          <div class="field">
+            <label for="kidSpacing">Years Between Children</label>
+            <div class="field-input">
+              <input
+                id="kidSpacing"
+                type="number"
+                min="0"
+                max="10"
+                step="1"
+                value="2"
+                aria-describedby="kidSpacing-help"
+              />
+              <span class="suffix">yrs</span>
+            </div>
+            <small id="kidSpacing-help">Spacing between each child's birth.</small>
+          </div>
+
+          <div class="field">
+            <label for="grandkidsPerKid">Grandchildren per Child</label>
+            <div class="field-input">
+              <input
+                id="grandkidsPerKid"
+                type="number"
+                min="0"
+                max="10"
+                step="1"
+                value="2"
+                aria-describedby="grandkidsPerKid-help"
+              />
+            </div>
+            <small id="grandkidsPerKid-help">Number of grandchildren each child will have.</small>
+          </div>
+
+          <div class="field">
+            <label for="grandkidSeedAge">Age When Child Seeds Grandkids</label>
+            <div class="field-input">
+              <input
+                id="grandkidSeedAge"
+                type="number"
+                min="20"
+                max="65"
+                step="1"
+                value="35"
+                aria-describedby="grandkidSeedAge-help"
+              />
+              <span class="suffix">yrs</span>
+            </div>
+            <small id="grandkidSeedAge-help">Age when each child will seed their first grandchild's fund (grandkids turn 5 at this age).</small>
+          </div>
+
+          <div class="field">
+            <label for="grandkidSeedAmount">Seed Amount per Grandchild</label>
+            <div class="field-input">
+              <span class="prefix">$</span>
+              <input
+                id="grandkidSeedAmount"
+                type="number"
+                step="100"
+                min="0"
+                value="1000"
+                aria-describedby="grandkidSeedAmount-help"
+              />
+            </div>
+            <small id="grandkidSeedAmount-help">Amount each child will seed for each of their children when they turn 5.</small>
+          </div>
+
+          <div class="field">
+            <label for="grandkidMonthlyContribution">Grandchildren's Monthly Contribution</label>
+            <div class="field-input">
+              <span class="prefix">$</span>
+              <input
+                id="grandkidMonthlyContribution"
+                type="number"
+                step="50"
+                min="0"
+                value="0"
+                aria-describedby="grandkidMonthlyContribution-help"
+              />
+            </div>
+            <small id="grandkidMonthlyContribution-help">Monthly contribution each grandchild will make starting at age 20.</small>
+          </div>
+        </section>
+
+        <section class="results-section">
+          <h2>Investment Summary</h2>
+          <div class="summary-grid">
+            <div class="summary-card">
+              <h3>Total Investment</h3>
+              <div class="summary-value" id="totalInvestment">$0.00</div>
+              <p>Total amount you invest for all children</p>
+            </div>
+            <div class="summary-card">
+              <h3>Total Grandchildren</h3>
+              <div class="summary-value" id="totalGrandkids">0</div>
+              <p>Total number of grandchildren</p>
+            </div>
+            <div class="summary-card">
+              <h3>Total Grandkid Seeds</h3>
+              <div class="summary-value" id="totalGrandkidSeeds">$0.00</div>
+              <p>Total amount children will seed for grandchildren</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="childrenResults" class="results-section">
+          <h2>Children's Investment Details</h2>
+          <div id="childrenResultsContainer"></div>
+        </section>
+      </main>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+        <a class="schedule-link" href="generational-wealth.html">Generational wealth calculator →</a>
+        <a class="schedule-link" href="reverse-generational.html">3-Generation reverse calculator →</a>
+      </footer>
+    </div>
+
+    <script src="parent-perspective.js"></script>
+  </body>
+</html>
+

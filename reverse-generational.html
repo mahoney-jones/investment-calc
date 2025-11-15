@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3-Generation Reverse Wealth Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>3-Generation Reverse Wealth Calculator</h1>
+        <p>
+          Calculate how much you need to invest now to ensure your children and grandchildren reach their wealth targets at age 65.
+        </p>
+      </header>
+
+      <section class="form-section">
+        <div class="field">
+          <label for="numChildren">Number of Children</label>
+          <div class="field-input">
+            <input
+              id="numChildren"
+              type="number"
+              min="1"
+              max="10"
+              step="1"
+              value="2"
+              aria-describedby="numChildren-help"
+            />
+          </div>
+          <small id="numChildren-help">How many children you have.</small>
+        </div>
+
+        <div class="field">
+          <label for="grandkidsPerChild">Grandchildren per Child</label>
+          <div class="field-input">
+            <input
+              id="grandkidsPerChild"
+              type="number"
+              min="0"
+              max="10"
+              step="1"
+              value="2"
+              aria-describedby="grandkidsPerChild-help"
+            />
+          </div>
+          <small id="grandkidsPerChild-help">Number of grandchildren each child will have.</small>
+        </div>
+
+        <div class="field">
+          <label for="rate">Annual Return Rate</label>
+          <div class="field-input">
+            <input
+              id="rate"
+              type="number"
+              step="0.25"
+              min="0"
+              value="7.8"
+              aria-describedby="rate-help"
+            />
+            <span class="suffix">%</span>
+          </div>
+          <small id="rate-help">Expected annual return (use historical returns already net of fees).</small>
+        </div>
+
+        <div class="field">
+          <label for="frequency">Compounding Frequency</label>
+          <select id="frequency" aria-describedby="frequency-help">
+            <option value="365">Daily</option>
+            <option value="52">Weekly</option>
+            <option value="26">Bi-weekly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="2">Semiannually</option>
+            <option value="1">Annually</option>
+          </select>
+          <small id="frequency-help">Number of times interest compounds each year.</small>
+        </div>
+
+        <div class="field">
+          <label for="childTarget">Children's Target at Age 65</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="childTarget"
+              type="number"
+              step="100000"
+              min="0"
+              value="100000"
+              aria-describedby="childTarget-help"
+            />
+          </div>
+          <small id="childTarget-help">Target amount each child should have at age 65.</small>
+        </div>
+
+        <div class="field">
+          <label for="grandkidTarget">Grandchildren's Target at Age 65</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="grandkidTarget"
+              type="number"
+              step="100000"
+              min="0"
+              value="100000"
+              aria-describedby="grandkidTarget-help"
+            />
+          </div>
+          <small id="grandkidTarget-help">Target amount each grandchild should have at age 65.</small>
+        </div>
+
+        <div class="field">
+          <label for="childMonthlyContribution">Children's Monthly Contribution</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="childMonthlyContribution"
+              type="number"
+              step="50"
+              min="0"
+              value="0"
+              aria-describedby="childMonthlyContribution-help"
+            />
+          </div>
+          <small id="childMonthlyContribution-help">Monthly contribution each child will make starting at age 20.</small>
+        </div>
+
+        <div class="field">
+          <label for="grandkidMonthlyContribution">Grandchildren's Monthly Contribution</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="grandkidMonthlyContribution"
+              type="number"
+              step="50"
+              min="0"
+              value="0"
+              aria-describedby="grandkidMonthlyContribution-help"
+            />
+          </div>
+          <small id="grandkidMonthlyContribution-help">Monthly contribution each grandchild will make starting at age 20.</small>
+        </div>
+      </section>
+
+      <details class="advanced-options">
+        <summary>Advanced Options</summary>
+        <div class="advanced-options-content">
+          <div class="field">
+            <label for="mer">Management Expense Ratio (MER)</label>
+            <div class="field-input">
+              <input
+                id="mer"
+                type="number"
+                step="0.01"
+                min="0"
+                max="5"
+                value="0"
+                aria-describedby="mer-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="mer-help">Leave at 0% if using historical returns (already net of fees). Only adjust for "what-if" scenarios.</small>
+          </div>
+
+          <div class="field">
+            <label for="childSpacing">Years Between Children</label>
+            <div class="field-input">
+              <input
+                id="childSpacing"
+                type="number"
+                step="1"
+                min="0"
+                value="2"
+                aria-describedby="childSpacing-help"
+              />
+              <span class="suffix">yrs</span>
+            </div>
+            <small id="childSpacing-help">Spacing between children's ages (default: 2 years).</small>
+          </div>
+        </div>
+      </details>
+
+      <section id="childrenSection" class="children-section">
+        <h2>Children's Current Ages</h2>
+        <p class="section-description">Enter the current age of your oldest child. Ages for other children will be calculated based on spacing.</p>
+        <div id="childrenContainer"></div>
+      </section>
+
+      <section class="results summary-results" aria-live="polite">
+        <h2>Investment Summary</h2>
+        <div class="results">
+          <div class="result-card">
+            <h2>Total Investment Required</h2>
+            <p class="result-value" id="totalInvestment">$0.00</p>
+            <small>Total amount you need to invest now for all children.</small>
+          </div>
+
+          <div class="result-card">
+            <h2>Total Grandchildren</h2>
+            <p class="result-value" id="totalGrandkids">0</p>
+            <small>Total number of grandchildren across all children.</small>
+          </div>
+
+          <div class="result-card">
+            <h2>Grandkids Seed Total</h2>
+            <p class="result-value" id="grandkidsSeedTotal">$0.00</p>
+            <small>Total amount that will be seeded for grandchildren over time.</small>
+          </div>
+
+          <div class="result-card">
+            <h2>Average per Child</h2>
+            <p class="result-value" id="averagePerChild">$0.00</p>
+            <small>Average investment required per child.</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="childrenResults" class="children-results" aria-live="polite">
+        <h2>Per-Child Breakdown</h2>
+        <div id="childrenResultsContainer"></div>
+      </section>
+
+      <section id="grandkidsSummary" class="grandkids-summary" aria-live="polite">
+        <h2>Grandchildren Summary</h2>
+        <div id="grandkidsSummaryContainer"></div>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+        <a class="schedule-link" href="generational-wealth.html">Generational wealth calculator →</a>
+      <a class="schedule-link" href="parent-perspective.html">Parent investment calculator →</a>
+      </footer>
+    </main>
+
+    <script src="reverse-generational.js" type="module"></script>
+  </body>
+</html>
+

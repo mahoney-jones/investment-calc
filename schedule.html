@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compound Schedule</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Compound Growth Breakdown</h1>
+        <p>
+          Track how each compounding period grows the balance using the inputs from the calculator.
+        </p>
+      </header>
+
+      <section class="summary" id="summary"></section>
+
+      <section class="table-container" aria-live="polite">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Period</th>
+              <th scope="col">Balance After Interest</th>
+              <th scope="col">Interest This Period</th>
+              <th scope="col">Cumulative Interest</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody">
+            <tr>
+              <td colspan="4" class="empty">Waiting for calculator inputs…</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+        <a class="schedule-link" href="fee-impact.html">Compare fee impact →</a>
+      </footer>
+    </main>
+
+    <script src="schedule.js" type="module"></script>
+  </body>
+</html>

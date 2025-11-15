@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fee Impact Comparison</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Fee Impact Comparison</h1>
+        <p>
+          Compare how different fees affect your investment returns over time.
+        </p>
+      </header>
+
+      <section class="form-section form-section-single-row">
+        <div class="field">
+          <label for="comparisonPrincipal">Initial Investment</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="comparisonPrincipal"
+              type="number"
+              step="1000"
+              min="0"
+              value="10000"
+              aria-describedby="comparison-principal-help"
+            />
+          </div>
+          <small id="comparison-principal-help">Starting amount to invest.</small>
+        </div>
+
+        <div class="field">
+          <label for="comparisonRate">Expected Annual Return</label>
+          <div class="field-input">
+            <input
+              id="comparisonRate"
+              type="number"
+              step="0.25"
+              min="0"
+              value="7.8"
+              aria-describedby="comparison-rate-help"
+            />
+            <span class="suffix">%</span>
+          </div>
+          <small id="comparison-rate-help">Expected gross return before fees.</small>
+        </div>
+
+        <div class="field">
+          <label for="comparisonYears">Investment Period</label>
+          <div class="field-input">
+            <input
+              id="comparisonYears"
+              type="number"
+              min="1"
+              step="1"
+              value="30"
+              aria-describedby="comparison-years-help"
+            />
+            <span class="suffix">yrs</span>
+          </div>
+          <small id="comparison-years-help">How long you'll invest.</small>
+        </div>
+
+        <div class="field">
+          <label for="comparisonFrequency">Compounding</label>
+          <select id="comparisonFrequency" aria-describedby="comparison-frequency-help">
+            <option value="365">Daily</option>
+            <option value="52">Weekly</option>
+            <option value="26">Bi-weekly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="2">Semiannually</option>
+            <option value="1">Annually</option>
+          </select>
+          <small id="comparison-frequency-help">Compounding frequency.</small>
+        </div>
+      </section>
+
+      <section class="comparison-scenarios">
+        <div>
+          <h2>Compare Investment Scenarios</h2>
+        <p class="section-description">
+          Compare fee structures side-by-side. Starter fee is charged upfront. Advisory fee is annual (e.g., 1% for traditional advisor).
+          Examples: VFV DIY (0.09% MER), VGRO (0.24% MER), Managed (1.5% MER + 1% advisor + 5% starter).
+        </p>
+        </div>
+
+        <div class="scenarios-grid">
+          <!-- Scenario 1 -->
+          <div class="scenario-card">
+            <div class="scenario-header">
+              <input
+                type="text"
+                class="scenario-name"
+                id="scenario1Name"
+                value="Your Portfolio"
+                placeholder="Scenario name"
+              />
+            </div>
+            <div class="scenario-inputs">
+              <div class="field">
+                <label for="scenario1Starter">Starter Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario1Starter"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="0"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario1MER">MER</label>
+                <div class="field-input">
+                  <input
+                    id="scenario1MER"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="0.11"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario1Advisory">Advisory Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario1Advisory"
+                    type="number"
+                    step="0.25"
+                    min="0"
+                    value="0"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario1Trading">Trading Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario1Trading"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="20"
+                  />
+                </div>
+              </div>
+              <div class="field field-full-width">
+                <label for="scenario1Other">Platform + Other Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario1Other"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="scenario-results">
+              <div class="result-item">
+                <span class="label">Final Balance</span>
+                <span class="value" id="scenario1Final">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Total Fees Paid</span>
+                <span class="value fee-amount" id="scenario1Fees">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Net Return</span>
+                <span class="value" id="scenario1Net">0.00%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="scenario-card">
+            <div class="scenario-header">
+              <input
+                type="text"
+                class="scenario-name"
+                id="scenario2Name"
+                value="VGRO"
+                placeholder="Scenario name"
+              />
+            </div>
+            <div class="scenario-inputs">
+              <div class="field">
+                <label for="scenario2Starter">Starter Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario2Starter"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="0"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario2MER">MER</label>
+                <div class="field-input">
+                  <input
+                    id="scenario2MER"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="0.24"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario2Advisory">Advisory Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario2Advisory"
+                    type="number"
+                    step="0.25"
+                    min="0"
+                    value="0"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario2Trading">Trading Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario2Trading"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="field field-full-width">
+                <label for="scenario2Other">Platform + Other Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario2Other"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="scenario-results">
+              <div class="result-item">
+                <span class="label">Final Balance</span>
+                <span class="value" id="scenario2Final">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Total Fees Paid</span>
+                <span class="value fee-amount" id="scenario2Fees">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Net Return</span>
+                <span class="value" id="scenario2Net">0.00%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="scenario-card">
+            <div class="scenario-header">
+              <input
+                type="text"
+                class="scenario-name"
+                id="scenario3Name"
+                value="Managed Fund"
+                placeholder="Scenario name"
+              />
+            </div>
+            <div class="scenario-inputs">
+              <div class="field">
+                <label for="scenario3Starter">Starter Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario3Starter"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="5"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario3MER">MER</label>
+                <div class="field-input">
+                  <input
+                    id="scenario3MER"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value="1.50"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario3Advisory">Advisory Fee</label>
+                <div class="field-input">
+                  <input
+                    id="scenario3Advisory"
+                    type="number"
+                    step="0.25"
+                    min="0"
+                    value="1.00"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="scenario3Trading">Trading Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario3Trading"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="field field-full-width">
+                <label for="scenario3Other">Platform + Other Fees</label>
+                <div class="field-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="scenario3Other"
+                    type="number"
+                    step="5"
+                    min="0"
+                    value="50"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="scenario-results">
+              <div class="result-item">
+                <span class="label">Final Balance</span>
+                <span class="value" id="scenario3Final">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Total Fees Paid</span>
+                <span class="value fee-amount" id="scenario3Fees">$0.00</span>
+              </div>
+              <div class="result-item">
+                <span class="label">Net Return</span>
+                <span class="value" id="scenario3Net">0.00%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recalculate-button-container">
+          <button id="recalculateBtn" class="recalculate-btn">↻ Recalculate</button>
+        </div>
+        
+        <div class="scroll-indicator">
+          <span>Summary Below</span>
+        </div>
+      </section>
+
+      <section class="comparison-summary">
+        <h2>Side-by-Side Comparison</h2>
+        <div class="comparison-table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th id="summaryHeader1">Your Portfolio</th>
+                <th id="summaryHeader2">VGRO</th>
+                <th id="summaryHeader3">Managed Fund</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Final Balance</th>
+                <td id="summaryFinal1">$0.00</td>
+                <td id="summaryFinal2">$0.00</td>
+                <td id="summaryFinal3">$0.00</td>
+              </tr>
+              <tr>
+                <th scope="row">Total Fees Paid</th>
+                <td id="summaryFees1">$0.00</td>
+                <td id="summaryFees2">$0.00</td>
+                <td id="summaryFees3">$0.00</td>
+              </tr>
+              <tr>
+                <th scope="row">Net Annual Return</th>
+                <td id="summaryNet1">0.00%</td>
+                <td id="summaryNet2">0.00%</td>
+                <td id="summaryNet3">0.00%</td>
+              </tr>
+              <tr class="highlight-row">
+                <th scope="row">Difference vs. Best</th>
+                <td id="summaryDiff1">—</td>
+                <td id="summaryDiff2">—</td>
+                <td id="summaryDiff3">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+      </footer>
+    </main>
+
+    <script src="fee-impact.js" type="module"></script>
+  </body>
+</html>
+

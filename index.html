@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compound Interest Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Compound Interest Calculator</h1>
+        <p>
+          Enter your investment details to project how the balance grows with compounding.
+        </p>
+      </header>
+
+      <section class="form-section">
+        <div class="field">
+          <label for="principal">Initial Investment</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="principal"
+              type="number"
+              step="1000"
+              min="0"
+              value="10000"
+              aria-describedby="principal-help"
+            />
+          </div>
+          <small id="principal-help">Upfront contribution (principal).</small>
+        </div>
+
+        <div class="field">
+          <label for="rate">Annual Interest Rate</label>
+          <div class="field-input">
+            <input
+              id="rate"
+              type="number"
+              step="0.25"
+              min="0"
+              value="7.8"
+              aria-describedby="rate-help"
+            />
+            <span class="suffix">%</span>
+          </div>
+          <small id="rate-help">Expected return (use historical returns already net of fees).</small>
+        </div>
+
+        <div class="field">
+          <label for="monthlyContribution">Monthly Contribution</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="monthlyContribution"
+              type="number"
+              step="50"
+              min="0"
+              value="500"
+              aria-describedby="contribution-help"
+            />
+          </div>
+          <small id="contribution-help">Regular monthly investment amount.</small>
+        </div>
+
+        <div class="field">
+          <label for="frequency">Compounding Frequency</label>
+          <select id="frequency" aria-describedby="frequency-help">
+            <option value="365">Daily</option>
+            <option value="52">Weekly</option>
+            <option value="26">Bi-weekly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="2">Semiannually</option>
+            <option value="1">Annually</option>
+          </select>
+          <small id="frequency-help">Number of times interest compounds each year.</small>
+        </div>
+
+        <div class="field">
+          <label for="years">Length Invested (years)</label>
+          <div class="field-input">
+            <input
+              id="years"
+              type="number"
+              min="1"
+              step="1"
+              value="30"
+              aria-describedby="years-help"
+            />
+            <span class="suffix">yrs</span>
+          </div>
+          <small id="years-help">How long the funds remain invested.</small>
+        </div>
+      </section>
+
+      <details class="advanced-options">
+        <summary>Advanced Options</summary>
+        <div class="advanced-options-content">
+          <div class="field">
+            <label for="mer">Management Expense Ratio (MER)</label>
+            <div class="field-input">
+              <input
+                id="mer"
+                type="number"
+                step="0.01"
+                min="0"
+                max="5"
+                value="0"
+                aria-describedby="mer-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="mer-help">Leave at 0% if using historical returns (already net of fees). Only adjust for "what-if" scenarios.</small>
+          </div>
+        </div>
+      </details>
+
+      <section class="results" aria-live="polite">
+        <div class="result-card">
+          <h2>Future Balance</h2>
+          <p class="result-value" id="futureValue">$1,283.36</p>
+          <small>Total amount at the end of the investment period.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Total Contributed</h2>
+          <p class="result-value" id="totalContributed">$1,000.00</p>
+          <small>Initial investment plus all monthly contributions.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Total Interest Earned</h2>
+          <p class="result-value" id="interestEarned">$283.36</p>
+          <small>Investment gains from compound growth.</small>
+        </div>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" id="scheduleLink" href="schedule.html"
+          >View compound schedule →</a
+        >
+        <a class="schedule-link" href="fee-impact.html"
+          >Compare fee impact →</a
+        >
+        <a class="schedule-link" href="generational-wealth.html"
+          >Generational wealth calculator →</a
+        >
+      <a class="schedule-link" href="reverse-generational.html"
+        >3-Generation reverse calculator →</a
+      >
+      <a class="schedule-link" href="parent-perspective.html"
+        >Parent investment calculator →</a
+      >
+      </footer>
+    </main>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

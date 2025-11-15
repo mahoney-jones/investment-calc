@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generational Wealth Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Generational Wealth Calculator</h1>
+        <p>
+          Plan and visualize investment growth for your children to build generational wealth.
+        </p>
+      </header>
+
+      <section class="form-section">
+        <div class="field">
+          <label for="numChildren">Number of Children</label>
+          <div class="field-input">
+            <input
+              id="numChildren"
+              type="number"
+              min="1"
+              max="10"
+              step="1"
+              value="2"
+              aria-describedby="numChildren-help"
+            />
+          </div>
+          <small id="numChildren-help">How many children to plan investments for.</small>
+        </div>
+
+        <div class="field">
+          <label for="rate">Annual Return Rate</label>
+          <div class="field-input">
+            <input
+              id="rate"
+              type="number"
+              step="0.25"
+              min="0"
+              value="7.8"
+              aria-describedby="rate-help"
+            />
+            <span class="suffix">%</span>
+          </div>
+          <small id="rate-help">Expected annual return (use historical returns already net of fees).</small>
+        </div>
+
+        <div class="field">
+          <label for="frequency">Compounding Frequency</label>
+          <select id="frequency" aria-describedby="frequency-help">
+            <option value="365">Daily</option>
+            <option value="52">Weekly</option>
+            <option value="26">Bi-weekly</option>
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="2">Semiannually</option>
+            <option value="1">Annually</option>
+          </select>
+          <small id="frequency-help">Number of times interest compounds each year.</small>
+        </div>
+
+        <div class="field">
+          <label for="yearsToMaturity">Years Until Maturity</label>
+          <div class="field-input">
+            <input
+              id="yearsToMaturity"
+              type="number"
+              min="1"
+              step="1"
+              value="25"
+              aria-describedby="yearsToMaturity-help"
+            />
+            <span class="suffix">yrs</span>
+          </div>
+          <small id="yearsToMaturity-help">Years from now until the investment matures (e.g., when child reaches age 25, 30, etc.).</small>
+        </div>
+      </section>
+
+      <details class="advanced-options">
+        <summary>Advanced Options</summary>
+        <div class="advanced-options-content">
+          <div class="field">
+            <label for="monthlyContribution">Monthly Contribution per Child</label>
+            <div class="field-input">
+              <span class="prefix">$</span>
+              <input
+                id="monthlyContribution"
+                type="number"
+                step="50"
+                min="0"
+                value="0"
+                aria-describedby="contribution-help"
+              />
+            </div>
+            <small id="contribution-help">Optional: Regular monthly investment amount per child.</small>
+          </div>
+
+          <div class="field">
+            <label for="mer">Management Expense Ratio (MER)</label>
+            <div class="field-input">
+              <input
+                id="mer"
+                type="number"
+                step="0.01"
+                min="0"
+                max="5"
+                value="0"
+                aria-describedby="mer-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="mer-help">Leave at 0% if using historical returns (already net of fees). Only adjust for "what-if" scenarios.</small>
+          </div>
+        </div>
+      </details>
+
+      <section id="childrenSection" class="children-section">
+        <h2>Children's Investment Details</h2>
+        <div id="childrenContainer"></div>
+      </section>
+
+      <section class="results summary-results" aria-live="polite">
+        <div class="result-card">
+          <h2>Total Invested</h2>
+          <p class="result-value" id="totalInvested">$0.00</p>
+          <small>Total initial investment across all children.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Total Projected Value</h2>
+          <p class="result-value" id="totalProjectedValue">$0.00</p>
+          <small>Combined projected value at maturity.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Average per Child</h2>
+          <p class="result-value" id="averagePerChild">$0.00</p>
+          <small>Average projected value per child.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Total Growth</h2>
+          <p class="result-value" id="totalGrowth">$0.00</p>
+          <small>Total investment gains across all children.</small>
+        </div>
+      </section>
+
+      <section id="childrenResults" class="children-results" aria-live="polite">
+        <h2>Individual Projections</h2>
+        <div id="childrenResultsContainer"></div>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+        <a class="schedule-link" href="fee-impact.html">Compare fee impact →</a>
+        <a class="schedule-link" href="reverse-generational.html">3-Generation reverse calculator →</a>
+      <a class="schedule-link" href="parent-perspective.html">Parent investment calculator →</a>
+      </footer>
+    </main>
+
+    <script src="generational-wealth.js" type="module"></script>
+  </body>
+</html>
+
