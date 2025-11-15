@@ -27,6 +27,34 @@ This is a comprehensive compound interest calculator designed for Canadian index
 
 ## Recent Updates (Current Session)
 
+### Mobile Responsiveness Improvements (Latest)
+
+**What:** Comprehensive mobile layout fixes across all calculator pages to ensure consistent, working mobile experience matching `index.html`.
+
+**Why:** Mobile users were experiencing text overflow, input field overflow, table overflow, and button layout issues. All pages needed to match the working mobile layout of the main calculator.
+
+**Key Fixes:**
+- Text wrapping: Headers, labels, and help text now wrap properly
+- Input fields: Full-width with proper constraints, no overflow
+- Tables: Horizontal scroll within containers, no page overflow
+- Buttons: Vertical stack on mobile, consistent styling
+- Cards/Grids: Single column layout on mobile
+- Form sections: Single column on mobile (600px breakpoint)
+
+**Pages Updated:**
+- `parent-perspective.html` - Structure fixes, mobile styles
+- `retirement-planning.html` - Timeline section mobile styles
+- All pages - Consistent button and text wrapping
+
+**Technical Details:**
+- Mobile breakpoint: 600px
+- Comprehensive CSS media queries
+- Proper overflow handling (`overflow-x: hidden` on containers)
+- Table containers with `overflow-x: auto` for horizontal scrolling
+- Text elements with `word-wrap: break-word` and `overflow-wrap: break-word`
+
+---
+
 ### 1. Monthly Contributions Feature
 **What:** Added monthly contribution tracking to main calculator for realistic long-term planning.
 
