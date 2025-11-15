@@ -13,6 +13,14 @@ This is a comprehensive compound interest calculator designed for Canadian index
 - **`fee-impact.js`** - Multi-scenario fee comparison calculations
 - **`schedule.html`** - Period-by-period compound growth breakdown
 - **`schedule.js`** - Amortization schedule generator
+- **`retirement-planning.html`** - Retirement planning calculator with withdrawal strategy
+- **`retirement-planning.js`** - Retirement calculations and timeline generation
+- **`generational-wealth.html`** - Forward generational wealth calculator
+- **`generational-wealth.js`** - Generational wealth calculations
+- **`reverse-generational.html`** - 3-generation reverse calculator
+- **`reverse-generational.js`** - Reverse calculation logic
+- **`parent-perspective.html`** - Parent investment calculator
+- **`parent-perspective.js`** - Parent perspective calculations
 - **`styles.css`** - Shared responsive styling with advanced options support
 - **`Product List.csv`** - Vanguard ETF data (38 funds with MER, returns, etc.)
 - **`BALANCED-PORTFOLIO-STRATEGY.md`** - Detailed Bogle-inspired investment strategy guide
@@ -507,12 +515,78 @@ This calculator embodies Jack Bogle's investment philosophy:
 - [ ] DRIP toggle with separate dividend yield input
 - [ ] Portfolio rebalancing simulator
 
+### Retirement Planning Calculator (`retirement-planning.html`)
+
+**Purpose:** Comprehensive retirement planning tool that calculates when you can retire, how much you need to save, and safe withdrawal strategies.
+
+**Primary Inputs:**
+- Current Age - Default: 35
+- Current Retirement Savings - Default: $50,000
+- Monthly Savings - Default: $1,000
+- Expected Annual Return (%) - Default: 7.8%
+- Target Retirement Age - Default: 65 (or auto-calculate)
+- Desired Annual Income in Retirement - Default: $60,000
+
+**Advanced Options:**
+- Withdrawal Rate (%) - Default: 4% (safe withdrawal rate)
+- Inflation Rate (%) - Default: 2.5%
+- Life Expectancy - Default: 90 years
+- Compounding Frequency - Default: Monthly
+
+**Outputs:**
+- Years Until Retirement - Calculated or user-specified
+- Retirement Age - When you can retire
+- Portfolio Value at Retirement - Total accumulated savings
+- Required Portfolio Value - Amount needed to support desired income
+- Annual Withdrawal Amount - Safe withdrawal in first year
+- Monthly Savings Needed - Required savings to reach goal
+- Detailed Timeline - Accumulation and withdrawal phases
+
+**Key Features:**
+- **Retirement Date Calculator**: Determines when you can retire based on current savings rate
+- **Savings Goal Calculator**: Calculates required monthly savings to reach retirement goal
+- **Withdrawal Strategy**: Implements 4% rule (or custom rate) with inflation adjustments
+- **Full Timeline**: Shows accumulation phase milestones and withdrawal phase projections
+- **Inflation-Adjusted**: Accounts for inflation in both accumulation and withdrawal phases
+- **Real-time Updates**: Calculations update as you change inputs
+
+**How It Works:**
+1. **Accumulation Phase**: Calculates portfolio growth from current age to retirement, accounting for:
+   - Current savings compounding over time
+   - Monthly contributions with proper compounding
+   - Expected return rate
+
+2. **Retirement Goal**: Determines required portfolio value based on:
+   - Desired annual income
+   - Withdrawal rate (typically 4%)
+   - Inflation adjustment to retirement date
+
+3. **Withdrawal Phase**: Simulates retirement withdrawals:
+   - Annual withdrawals adjusted for inflation
+   - Portfolio continues to grow during retirement
+   - Shows portfolio value over time
+
+**Example Scenario:**
+- Age 35, $50,000 saved, $1,000/month savings
+- 7.8% return, retire at 65, $60,000/year desired income
+- 4% withdrawal rate, 2.5% inflation
+- **Result**: Can retire at 65 with ~$1.5M portfolio, withdrawing $60,000/year (inflation-adjusted)
+
+**Use Cases:**
+- Plan when you can retire
+- Determine if current savings rate is sufficient
+- Calculate required monthly savings for retirement goal
+- Understand safe withdrawal rates
+- Visualize full retirement journey
+
+---
+
 ### Under Consideration
 - Integration with live market data APIs
 - Multi-asset portfolio builder
 - Risk assessment scoring
-- Retirement planning calculator
-- Withdrawal strategy modeling
+- Monte Carlo simulations for retirement planning
+- Tax-advantaged account modeling (RRSP/TFSA)
 
 ---
 
@@ -565,6 +639,15 @@ This project is for personal/educational use. No warranty provided. Investment d
 ---
 
 ## Changelog
+
+### Session Update (Nov 15, 2024)
+- ✅ Created Retirement Planning Calculator
+- ✅ Added retirement date calculation
+- ✅ Implemented withdrawal strategy (4% rule)
+- ✅ Added inflation-adjusted projections
+- ✅ Created detailed timeline visualization
+- ✅ Updated all navigation links
+- ✅ Added comprehensive documentation
 
 ### Session Update (Nov 9, 2025)
 - ✅ Added MER field to main calculator

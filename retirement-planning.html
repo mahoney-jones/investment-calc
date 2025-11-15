@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retirement Planning Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Retirement Planning Calculator</h1>
+        <p>
+          Plan your retirement by calculating when you can retire, how much you need to save, and how much you can safely withdraw.
+        </p>
+      </header>
+
+      <section class="form-section">
+        <div class="field">
+          <label for="currentAge">Current Age</label>
+          <div class="field-input">
+            <input
+              id="currentAge"
+              type="number"
+              min="18"
+              max="100"
+              step="1"
+              value="35"
+              aria-describedby="currentAge-help"
+            />
+            <span class="suffix">yrs</span>
+          </div>
+          <small id="currentAge-help">Your current age.</small>
+        </div>
+
+        <div class="field">
+          <label for="currentSavings">Current Retirement Savings</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="currentSavings"
+              type="number"
+              step="1000"
+              min="0"
+              value="50000"
+              aria-describedby="currentSavings-help"
+            />
+          </div>
+          <small id="currentSavings-help">Total amount already saved for retirement.</small>
+        </div>
+
+        <div class="field">
+          <label for="monthlySavings">Monthly Savings</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="monthlySavings"
+              type="number"
+              step="50"
+              min="0"
+              value="1000"
+              aria-describedby="monthlySavings-help"
+            />
+          </div>
+          <small id="monthlySavings-help">Amount you save each month for retirement.</small>
+        </div>
+
+        <div class="field">
+          <label for="expectedReturn">Expected Annual Return</label>
+          <div class="field-input">
+            <input
+              id="expectedReturn"
+              type="number"
+              step="0.25"
+              min="0"
+              value="7.8"
+              aria-describedby="expectedReturn-help"
+            />
+            <span class="suffix">%</span>
+          </div>
+          <small id="expectedReturn-help">Expected annual investment return (use historical returns net of fees).</small>
+        </div>
+
+        <div class="field">
+          <label for="targetRetirementAge">Target Retirement Age</label>
+          <div class="field-input">
+            <input
+              id="targetRetirementAge"
+              type="number"
+              min="18"
+              max="100"
+              step="1"
+              value="65"
+              aria-describedby="targetRetirementAge-help"
+            />
+            <span class="suffix">yrs</span>
+          </div>
+          <small id="targetRetirementAge-help">Age when you want to retire (leave blank to calculate when you can retire).</small>
+        </div>
+
+        <div class="field">
+          <label for="desiredAnnualIncome">Desired Annual Income in Retirement</label>
+          <div class="field-input">
+            <span class="prefix">$</span>
+            <input
+              id="desiredAnnualIncome"
+              type="number"
+              step="1000"
+              min="0"
+              value="60000"
+              aria-describedby="desiredAnnualIncome-help"
+            />
+          </div>
+          <small id="desiredAnnualIncome-help">Annual income you want in retirement (today's dollars).</small>
+        </div>
+      </section>
+
+      <details class="advanced-options">
+        <summary>Advanced Options</summary>
+        <div class="advanced-options-content">
+          <div class="field">
+            <label for="withdrawalRate">Withdrawal Rate</label>
+            <div class="field-input">
+              <input
+                id="withdrawalRate"
+                type="number"
+                step="0.1"
+                min="0"
+                max="10"
+                value="4"
+                aria-describedby="withdrawalRate-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="withdrawalRate-help">Annual withdrawal rate (4% is a common "safe" rate).</small>
+          </div>
+
+          <div class="field">
+            <label for="inflationRate">Inflation Rate</label>
+            <div class="field-input">
+              <input
+                id="inflationRate"
+                type="number"
+                step="0.1"
+                min="0"
+                max="10"
+                value="2.5"
+                aria-describedby="inflationRate-help"
+              />
+              <span class="suffix">%</span>
+            </div>
+            <small id="inflationRate-help">Expected annual inflation rate.</small>
+          </div>
+
+          <div class="field">
+            <label for="lifeExpectancy">Life Expectancy</label>
+            <div class="field-input">
+              <input
+                id="lifeExpectancy"
+                type="number"
+                min="50"
+                max="120"
+                step="1"
+                value="90"
+                aria-describedby="lifeExpectancy-help"
+              />
+              <span class="suffix">yrs</span>
+            </div>
+            <small id="lifeExpectancy-help">Age you plan to live until (for withdrawal calculations).</small>
+          </div>
+
+          <div class="field">
+            <label for="frequency">Compounding Frequency</label>
+            <select id="frequency" aria-describedby="frequency-help">
+              <option value="365">Daily</option>
+              <option value="52">Weekly</option>
+              <option value="26">Bi-weekly</option>
+              <option value="12" selected>Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="2">Semiannually</option>
+              <option value="1">Annually</option>
+            </select>
+            <small id="frequency-help">Number of times interest compounds each year.</small>
+          </div>
+        </div>
+      </details>
+
+      <section class="results" aria-live="polite">
+        <div class="result-card">
+          <h2>Years Until Retirement</h2>
+          <p class="result-value" id="yearsUntilRetirement">30</p>
+          <small id="yearsUntilRetirement-help">Years until you reach your retirement goal.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Retirement Age</h2>
+          <p class="result-value" id="retirementAge">65</p>
+          <small>Age when you can retire based on your plan.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Portfolio Value at Retirement</h2>
+          <p class="result-value" id="portfolioAtRetirement">$0.00</p>
+          <small>Total savings accumulated by retirement age.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Required Portfolio Value</h2>
+          <p class="result-value" id="requiredPortfolio">$0.00</p>
+          <small>Portfolio value needed to support your desired income.</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Annual Withdrawal Amount</h2>
+          <p class="result-value" id="annualWithdrawal">$0.00</p>
+          <small>Annual income you can withdraw in retirement (first year).</small>
+        </div>
+
+        <div class="result-card">
+          <h2>Monthly Savings Needed</h2>
+          <p class="result-value" id="monthlySavingsNeeded">$0.00</p>
+          <small>Monthly savings required to reach your retirement goal.</small>
+        </div>
+      </section>
+
+      <section class="timeline-section" id="timelineSection" style="display: none;">
+        <h2>Retirement Timeline</h2>
+        <div id="timelineContent"></div>
+      </section>
+
+      <footer class="actions">
+        <a class="schedule-link" href="index.html">← Back to calculator</a>
+        <a class="schedule-link" href="fee-impact.html">Compare fee impact →</a>
+        <a class="schedule-link" href="generational-wealth.html">Generational wealth calculator →</a>
+        <a class="schedule-link" href="reverse-generational.html">3-Generation reverse calculator →</a>
+        <a class="schedule-link" href="parent-perspective.html">Parent investment calculator →</a>
+      </footer>
+    </main>
+
+    <script src="retirement-planning.js" type="module"></script>
+  </body>
+</html>
+

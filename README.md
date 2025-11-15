@@ -23,6 +23,14 @@ Forward projection showing what happens when you invest for your children, inclu
 - Withdrawals when children seed their own kids' funds
 - Projected value of grandchildren's investments at age 65
 
+### 🎯 Retirement Planning Calculator (`retirement-planning.html`)
+Plan your retirement by calculating:
+- When you can retire based on your savings rate
+- How much you need to save monthly to reach your retirement goal
+- Safe withdrawal amounts in retirement (4% rule)
+- Full timeline showing accumulation and withdrawal phases
+- Inflation-adjusted projections
+
 ### 💸 Fee Impact Comparison (`fee-impact.html`)
 Compare different investment scenarios with varying fees (starter fees, MER, advisory fees, trading fees).
 
