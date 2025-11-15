@@ -21,16 +21,20 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  overflow-x: hidden;
 }
 
 .app {
   width: min(1200px, 100%);
+  max-width: 100%;
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 20px 45px -35px rgba(15, 23, 42, 0.5);
   padding: 2rem;
   display: grid;
   gap: 1.5rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 header h1 {
@@ -352,11 +356,14 @@ tbody tr:hover th {
 
 @media (max-width: 600px) {
   body {
-    padding: 1rem;
+    padding: 0.5rem;
+    overflow-x: hidden;
   }
 
   .app {
-    padding: 1.5rem;
+    padding: 1rem;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .form-section,
@@ -921,12 +928,15 @@ tbody tr:hover th {
   border-radius: 0.75rem;
   background: #fff;
   box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .grandkids-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-size: 0.9rem;
 }
