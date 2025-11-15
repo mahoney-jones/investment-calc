@@ -286,9 +286,80 @@ roi-calc/
 
 ---
 
+## Mobile Responsiveness Improvements
+
+### Comprehensive Mobile Fixes Applied Across All Pages
+
+Fixed mobile responsiveness issues to ensure all calculator pages match the working `index.html` layout and behavior on mobile devices.
+
+#### Issues Fixed:
+
+1. **Text Overflow**:
+   - Added `word-wrap: break-word` and `overflow-wrap: break-word` to all text elements
+   - Fixed header titles, subtitles, and help text wrapping properly
+   - Added `word-break: break-word` for long words
+
+2. **Input Field Overflow**:
+   - Fixed input fields and select dropdowns overflowing on mobile
+   - Added `width: 100%`, `max-width: 100%`, and `min-width: 0` to all inputs
+   - Reduced padding on mobile for better fit
+   - Set `font-size: 16px` on mobile to prevent iOS zoom
+
+3. **Table Overflow**:
+   - All tables now scroll horizontally within their containers
+   - Added `overflow-x: auto` and `max-width: 100%` to table containers
+   - Tables have `min-width: 600px` but scroll within containers
+   - Added `-webkit-overflow-scrolling: touch` for smooth mobile scrolling
+
+4. **Button Overflow**:
+   - Footer buttons now stack vertically on mobile
+   - Full-width buttons with proper text wrapping
+   - Consistent styling across all pages matching `index.html`
+
+5. **Card and Grid Layouts**:
+   - Summary grids stack to single column on mobile
+   - Child result grids use single column layout
+   - All cards have proper overflow protection
+
+#### Pages Updated:
+
+- ✅ `parent-perspective.html` - Removed wrapper div, fixed structure
+- ✅ `retirement-planning.html` - Added mobile styles for timeline section
+- ✅ All pages - Consistent mobile button styling
+- ✅ All pages - Proper text wrapping and overflow handling
+
+#### CSS Improvements:
+
+- Added comprehensive mobile media queries (max-width: 600px)
+- Fixed `.summary-grid`, `.summary-card`, `.summary-value` styles
+- Added `.results-section` styles with overflow protection
+- Enhanced `.timeline-section` mobile responsiveness
+- Improved `.grandkids-table-container` mobile handling
+
+#### Technical Details:
+
+**Mobile Breakpoint**: 600px
+- Form sections: Single column layout
+- Summary grids: Single column
+- Buttons: Vertical stack, full width
+- Tables: Horizontal scroll within containers
+- Text: Proper wrapping with break-word
+- Inputs: Full width with reduced padding
+
+---
+
 ## Summary
 
 Today's session resulted in:
+
+1. **Mobile Responsiveness Fixes**: Comprehensive mobile layout fixes across all calculator pages
+2. **Consistent Mobile Experience**: All pages now match `index.html`'s mobile behavior
+3. **Text and Input Fixes**: Proper wrapping and overflow handling for all elements
+4. **Table Improvements**: Tables scroll horizontally without breaking page layout
+5. **Button Consistency**: Footer buttons display consistently across all pages
+6. **GitHub Deployment**: Pushed all mobile fixes to GitHub Pages
+
+### Previous Session Summary
 
 1. **New Calculator Page**: Retirement Planning Calculator - comprehensive retirement planning with withdrawal strategy
 2. **Retirement Features**: 

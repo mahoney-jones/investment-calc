@@ -66,8 +66,9 @@ The calculators are hosted on GitHub Pages and available at:
 
 - Pure HTML, CSS, and JavaScript
 - No dependencies
-- Responsive design
+- Fully responsive design optimized for mobile devices
 - Accessible forms and inputs
+- Mobile-first approach with comprehensive overflow handling
 
 ## License
 

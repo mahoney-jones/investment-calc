@@ -163,10 +163,18 @@ This is a comprehensive compound interest calculator designed for Canadian index
 - Improved space efficiency for above-the-fold viewing
 
 #### Mobile Responsive
-- All pages fully responsive
+- All pages fully responsive and mobile-optimized
 - Comparison cards: 3 columns → 2 columns → 1 column
 - Touch-friendly buttons and inputs
 - Optimized spacing for all screen sizes
+- **Comprehensive Mobile Fixes (Latest Update)**:
+  - Text wrapping: All headers, labels, and help text wrap properly on mobile
+  - Input fields: Full-width inputs with proper overflow handling
+  - Tables: Horizontal scrolling within containers (no page overflow)
+  - Buttons: Vertical stack on mobile, consistent across all pages
+  - Cards and grids: Single column layout on mobile (600px breakpoint)
+  - Form sections: Single column layout on mobile
+  - All elements constrained to viewport width with proper overflow protection
 
 ---
 
